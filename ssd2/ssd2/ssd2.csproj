@@ -62,9 +62,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Context\ADrawingContext.cs" />
+    <Compile Include="Context\BlackContext.cs" />
+    <Compile Include="Context\GreenContext.cs" />
+    <Compile Include="Context\IDrawingContext.cs" />
     <Compile Include="UserInterface\SchemeOne.cs" />
     <Compile Include="UserInterface\SchemeTwo.cs" />
     <Compile Include="Visual\IDrawble.cs" />
+    <Compile Include="Visual\ISvgSaver.cs" />
     <Compile Include="Visual\VisualCurve.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -113,5 +118,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

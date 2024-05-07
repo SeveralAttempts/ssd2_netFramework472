@@ -9,33 +9,10 @@ using System.IO;
 namespace ssd2
 {
     internal class SchemeOne : VisualCurve
-    {
-        IPoint[] points = null;
+    { 
         public SchemeOne(ICurve curve) : base(curve)
         {
 
-        }
-
-        public override void Draw(int n)
-        {
-            points = new IPoint[n];
-            System.Drawing.PointF[] p = new System.Drawing.PointF[n];
-            Bitmap bitmap = new Bitmap(Convert.ToInt32(512), Convert.ToInt32(512));
-            Graphics g = Graphics.FromImage(bitmap);
-            g.Clear(System.Drawing.Color.White);
-            Pen pen = new Pen(System.Drawing.Color.Green, 5);
-            pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
-            pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-
-            for (int i = 0; i <= n - 1; i++)
-            {
-                points[i] = new Point();
-                curve.GetPoint((Convert.ToDouble(i) / Convert.ToDouble(n - 1)), out points[i]);
-                p[i] = new System.Drawing.PointF((float)points[i].X, (float)points[i].Y);
-            }
-            g.DrawBezier(pen, p[0], p[1], p[2], p[3]);         
-            bitmap.Save(HomePath.HP + "\\firstschemeimage.png",
-                System.Drawing.Imaging.ImageFormat.Png);
         }
 
         public override void SaveSVG()

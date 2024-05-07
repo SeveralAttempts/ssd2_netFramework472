@@ -51,7 +51,8 @@ namespace ssd2
             {
                 so = new SchemeOne(new Line(new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
-                so.Draw(4);
+                so.N = 4;
+                so.Draw(new GreenContext());
             }
             if (linePickerOne.SelectedItem.ToString() == "Bezier")
             {
@@ -59,7 +60,8 @@ namespace ssd2
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
-                so.Draw(4);
+                so.N = 4;
+                so.Draw(new GreenContext());
             }
             var res = ImageSourceToByteArrayOne();
             using (MemoryStream stream = new MemoryStream(res))
@@ -78,7 +80,8 @@ namespace ssd2
             {
                 st = new SchemeTwo(new Line(new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
-                st.Draw(4);
+                st.N = 4;
+                st.Draw(new BlackContext());
             }
             if (linePickerTwo.SelectedItem.ToString() == "Bezier")
             {
@@ -86,7 +89,8 @@ namespace ssd2
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
-                st.Draw(4);
+                st.N = 4;
+                st.Draw(new BlackContext());
             }
 
             var res = ImageSourceToByteArrayTwo();
