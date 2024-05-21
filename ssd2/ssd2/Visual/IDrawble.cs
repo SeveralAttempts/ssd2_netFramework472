@@ -8,6 +8,6 @@ namespace ssd2
 {
     internal interface IDrawable
     {
-        void Draw(IDrawingContext context);
+        void Draw(IConcreteContext context);
     }
 }

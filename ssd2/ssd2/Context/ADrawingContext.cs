@@ -9,29 +9,17 @@ namespace ssd2
 {
     abstract class ADrawingContext : IDrawingContext
     {
-        protected Graphics g;
-        protected Pen pen;
-        protected Bitmap bmp;
-        protected string fileName;
+        protected Colors color;
+        protected LineType lineType;
 
-        public Bitmap GetBitmap()
+        public Colors GetColor()
         {
-            return bmp;
+            return color;
         }
 
-        public string GetFileName()
+        public LineType GetLineType()
         {
-            return fileName;
-        }
-
-        public Graphics GetGraphics()
-        {
-            return g;
-        }
-
-        public Pen GetPen()
-        {
-            return pen;
+            return lineType;
         }
     }
 }

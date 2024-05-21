@@ -7,11 +7,21 @@ using System.Drawing;
 
 namespace ssd2
 {
+    enum Colors
+    {
+        Green,
+        Black
+    }
+
+    enum LineType
+    {
+        Dashed,
+        Straight
+    }
+
     internal interface IDrawingContext
     {
-        Graphics GetGraphics();
-        Pen GetPen();
-        Bitmap GetBitmap();
-        string GetFileName();
+        LineType GetLineType();
+        Colors GetColor();
     }
 }

@@ -52,7 +52,8 @@ namespace ssd2
                 so = new SchemeOne(new Line(new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
                 so.N = 4;
-                so.Draw(new GreenContext());
+                GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new GreenContext(), "firstschemeimage");
+                so.Draw(gcg);
             }
             if (linePickerOne.SelectedItem.ToString() == "Bezier")
             {
@@ -61,7 +62,8 @@ namespace ssd2
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
                 so.N = 4;
-                so.Draw(new GreenContext());
+                GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new GreenContext(), "firstschemeimage");
+                so.Draw(gcg);
             }
             var res = ImageSourceToByteArrayOne();
             using (MemoryStream stream = new MemoryStream(res))
@@ -81,7 +83,8 @@ namespace ssd2
                 st = new SchemeTwo(new Line(new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
                 st.N = 4;
-                st.Draw(new BlackContext());
+                GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new BlackContext(), "secondschemeimage");
+                st.Draw(gcg);
             }
             if (linePickerTwo.SelectedItem.ToString() == "Bezier")
             {
@@ -90,7 +93,8 @@ namespace ssd2
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
                 new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
                 st.N = 4;
-                st.Draw(new BlackContext());
+                GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new BlackContext(), "secondschemeimage");
+                st.Draw(gcg);
             }
 
             var res = ImageSourceToByteArrayTwo();

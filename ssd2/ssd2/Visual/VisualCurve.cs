@@ -20,7 +20,7 @@ namespace ssd2
             this.curve = curve;
         }
 
-        public void Draw(IDrawingContext context)
+        public void Draw(IConcreteContext concreteContext)
         {
             points = new IPoint[n];
             System.Drawing.PointF[] p = new System.Drawing.PointF[n];
@@ -31,8 +31,8 @@ namespace ssd2
                 curve.GetPoint((Convert.ToDouble(i) / Convert.ToDouble(n - 1)), out points[i]);
                 p[i] = new System.Drawing.PointF((float)points[i].X, (float)points[i].Y);
             }
-            context.GetGraphics().DrawBezier(context.GetPen(), p[0], p[1], p[2], p[3]);
-            context.GetBitmap().Save(HomePath.HP + context.GetFileName(),
+            concreteContext.GetGraphics().DrawBezier(concreteContext.GetPen(), p[0], p[1], p[2], p[3]);
+            concreteContext.GetBitmap().Save(HomePath.HP + concreteContext.GetFileName(),
                 System.Drawing.Imaging.ImageFormat.Png);
         }
 

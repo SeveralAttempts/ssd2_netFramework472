@@ -11,13 +11,8 @@ namespace ssd2
     {
         public GreenContext()
         {
-            bmp = new Bitmap(Convert.ToInt32(512), Convert.ToInt32(512));
-            g = Graphics.FromImage(bmp);
-            g.Clear(System.Drawing.Color.White);
-            pen = new Pen(System.Drawing.Color.Green, 5);
-            pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
-            pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-            fileName = "\\firstschemeimage.png";
+            color = Colors.Green;
+            lineType = LineType.Straight;
         }
     }
 }

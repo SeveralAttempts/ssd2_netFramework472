@@ -64,6 +64,8 @@
     </ApplicationDefinition>
     <Compile Include="Context\ADrawingContext.cs" />
     <Compile Include="Context\BlackContext.cs" />
+    <Compile Include="Context\ConcreteContext\GrapgicsConcreteContext.cs" />
+    <Compile Include="Context\ConcreteContext\IConcreteContext.cs" />
     <Compile Include="Context\GreenContext.cs" />
     <Compile Include="Context\IDrawingContext.cs" />
     <Compile Include="UserInterface\SchemeOne.cs" />
