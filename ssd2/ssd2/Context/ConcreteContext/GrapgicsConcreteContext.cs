@@ -15,22 +15,24 @@ namespace ssd2
         public Pen pen;
         public Bitmap bmp;
         public string fileName;
+        public Colors color;
+        public LineType dashStyle;
 
-        public GrapgicsConcreteContext(IDrawingContext context, string imageName)
+        public GrapgicsConcreteContext(IDrawingContext context, string imageName = "image")
         {
             Color color = default(Color);
             DashStyle dashStyle = default(DashStyle);
             switch (context.GetColor())
             {
-                case Colors.Black: color = Color.Black; break;
-                case Colors.Green: color = Color.Green; break;
+                case Colors.Black: color = Color.Black; this.color = Colors.Black; break;
+                case Colors.Green: color = Color.Green; this.color = Colors.Green; break;
             }
 
             switch (context.GetLineType())
             {
-                case LineType.Dashed: dashStyle = DashStyle.Dash;
+                case LineType.Dashed: dashStyle = DashStyle.Dash; this.dashStyle = LineType.Dashed;
                     break;
-                case LineType.Straight: dashStyle = DashStyle.Solid;
+                case LineType.Straight: dashStyle = DashStyle.Solid; this.dashStyle = LineType.Straight;
                     break;
                 default:
                     break;
@@ -41,8 +43,8 @@ namespace ssd2
             g.Clear(System.Drawing.Color.White);
             pen = new Pen(color, 5);
             pen.DashStyle = dashStyle;
-            pen.EndCap = System.Drawing.Drawing2D.LineCap.Square;
-            pen.StartCap = System.Drawing.Drawing2D.LineCap.Square;
+            pen.EndCap = this.color == Colors.Black ? System.Drawing.Drawing2D.LineCap.Square : System.Drawing.Drawing2D.LineCap.ArrowAnchor;
+            pen.StartCap = this.color == Colors.Black ? System.Drawing.Drawing2D.LineCap.Square : System.Drawing.Drawing2D.LineCap.Round;
             fileName = "\\" + imageName + ".png";
         }
 
@@ -64,6 +66,11 @@ namespace ssd2
         public Pen GetPen()
         {
             return pen;
+        }
+
+        public Colors GetColors()
+        {
+            return color;
         }
     }
 }

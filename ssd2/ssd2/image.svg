@@ -1,0 +1,5 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg"><defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+<path d="M0,0 L0,6 L9,3 z" fill="green" />
+</marker>
+</defs><circle cx="455" cy="243" r="2" fill="green"/><path d="M 455 243 C 245 104, 213 98, 245 187" stroke="green" fill="transparent" marker-end="url(#arrow)" /></svg>

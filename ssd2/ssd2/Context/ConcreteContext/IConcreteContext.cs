@@ -16,5 +16,7 @@ namespace ssd2
         Graphics GetGraphics();
 
         Pen GetPen();
+
+        Colors GetColors();
     }
 }

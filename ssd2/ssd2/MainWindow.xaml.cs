@@ -22,13 +22,14 @@ namespace ssd2
     /// </summary>
     public partial class MainWindow : Window
     {
-        SchemeOne so;
-        SchemeTwo st;
+        VisualPNG vp;
+        VisualSVG vs;
+        (double, double) FirstPoint, SecondPoint, ThirdPoint, ForthPoint;
         public MainWindow()
         {
             InitializeComponent();
-            so = null;
-            st = null;
+            vp = null;
+            vs = null;
             linePickerOne.ItemsSource = new String[]
             {
                 "Line",
@@ -47,24 +48,29 @@ namespace ssd2
         {
             Random rand = new Random();
             imgOne.Source = new BitmapImage();
+            FirstPoint = (rand.NextDouble() * 500, rand.NextDouble() * 500);
+            SecondPoint = (rand.NextDouble() * 500, rand.NextDouble() * 500);
+            ThirdPoint = (rand.NextDouble() * 500, rand.NextDouble() * 500);
+            ForthPoint = (rand.NextDouble() * 500, rand.NextDouble() * 500);
             if (linePickerOne.SelectedItem.ToString() == "Line")
             {
-                so = new SchemeOne(new Line(new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
-                new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
-                so.N = 4;
+                vp = new VisualPNG(new Line(new Point(FirstPoint.Item1, FirstPoint.Item2),
+                new Point(SecondPoint.Item1, SecondPoint.Item2)));
+                vp.N = 4;
                 GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new GreenContext(), "firstschemeimage");
-                so.Draw(gcg);
+                vp.Draw(gcg);
             }
             if (linePickerOne.SelectedItem.ToString() == "Bezier")
             {
-                so = new SchemeOne(new Bezier(new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
-                new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
-                new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
-                new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
-                so.N = 4;
+                vp = new VisualPNG(new Bezier(new Point(FirstPoint.Item1, FirstPoint.Item2),
+                new Point(SecondPoint.Item1, SecondPoint.Item2),
+                new Point(ThirdPoint.Item1, ThirdPoint.Item2),
+                new Point(ForthPoint.Item1, ForthPoint.Item2)));
+                vp.N = 4;
                 GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new GreenContext(), "firstschemeimage");
-                so.Draw(gcg);
+                vp.Draw(gcg);
             }
+
             var res = ImageSourceToByteArrayOne();
             using (MemoryStream stream = new MemoryStream(res))
             {
@@ -78,23 +84,28 @@ namespace ssd2
         void OnButtonClickedTwo(object sender, EventArgs args)
         {
             Random rand = new Random();
+            imgTwo.Source = new BitmapImage();
+            FirstPoint = (rand.NextDouble() * 500, rand.NextDouble() * 500);
+            SecondPoint = (rand.NextDouble() * 500, rand.NextDouble() * 500);
+            ThirdPoint = (rand.NextDouble() * 500, rand.NextDouble() * 500);
+            ForthPoint = (rand.NextDouble() * 500, rand.NextDouble() * 500);
             if (linePickerTwo.SelectedItem.ToString() == "Line")
             {
-                st = new SchemeTwo(new Line(new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
-                new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
-                st.N = 4;
+                vp = new VisualPNG(new Line(new Point(FirstPoint.Item1, FirstPoint.Item2),
+                new Point(SecondPoint.Item1, SecondPoint.Item2)));
+                vp.N = 4;
                 GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new BlackContext(), "secondschemeimage");
-                st.Draw(gcg);
+                vp.Draw(gcg);
             }
             if (linePickerTwo.SelectedItem.ToString() == "Bezier")
             {
-                st = new SchemeTwo(new Bezier(new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
-                new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
-                new Point(rand.NextDouble() * 500, rand.NextDouble() * 500),
-                new Point(rand.NextDouble() * 500, rand.NextDouble() * 500)));
-                st.N = 4;
+                vp = new VisualPNG(new Bezier(new Point(FirstPoint.Item1, FirstPoint.Item2),
+                new Point(SecondPoint.Item1, SecondPoint.Item2),
+                new Point(ThirdPoint.Item1, ThirdPoint.Item2),
+                new Point(ForthPoint.Item1, ForthPoint.Item2)));
+                vp.N = 4;
                 GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new BlackContext(), "secondschemeimage");
-                st.Draw(gcg);
+                vp.Draw(gcg);
             }
 
             var res = ImageSourceToByteArrayTwo();
@@ -129,12 +140,47 @@ namespace ssd2
 
         void OnButtonSVGClickedOne(object sender, EventArgs args)
         {
-            so.SaveSVG();
+
+            if (linePickerOne.SelectedItem.ToString() == "Line")
+            {
+                vs = new VisualSVG(new Line(new Point(FirstPoint.Item1, FirstPoint.Item2),
+                new Point(SecondPoint.Item1, SecondPoint.Item2)));
+                vs.N = 4;
+                GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new GreenContext());
+                vs.Draw(gcg);
+            }
+            if (linePickerOne.SelectedItem.ToString() == "Bezier")
+            {
+                vs = new VisualSVG(new Bezier(new Point(FirstPoint.Item1, FirstPoint.Item2),
+                new Point(SecondPoint.Item1, SecondPoint.Item2),
+                new Point(ThirdPoint.Item1, ThirdPoint.Item2),
+                new Point(ForthPoint.Item1, ForthPoint.Item2)));
+                vs.N = 4;
+                GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new GreenContext());
+                vs.Draw(gcg);
+            }
         }
 
         void OnButtonSVGClickedTwo(object sender, EventArgs args)
         {
-            st.SaveSVG();
+            if (linePickerTwo.SelectedItem.ToString() == "Line")
+            {
+                vs = new VisualSVG(new Line(new Point(FirstPoint.Item1, FirstPoint.Item2),
+                new Point(SecondPoint.Item1, SecondPoint.Item2)));
+                vs.N = 4;
+                GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new BlackContext());
+                vs.Draw(gcg);
+            }
+            if (linePickerTwo.SelectedItem.ToString() == "Bezier")
+            {
+                vs = new VisualSVG(new Bezier(new Point(FirstPoint.Item1, FirstPoint.Item2),
+                new Point(SecondPoint.Item1, SecondPoint.Item2),
+                new Point(ThirdPoint.Item1, ThirdPoint.Item2),
+                new Point(ForthPoint.Item1, ForthPoint.Item2)));
+                vs.N = 4;
+                GrapgicsConcreteContext gcg = new GrapgicsConcreteContext(new BlackContext());
+                vs.Draw(gcg);
+            }
         }
     }
 }

@@ -68,10 +68,9 @@
     <Compile Include="Context\ConcreteContext\IConcreteContext.cs" />
     <Compile Include="Context\GreenContext.cs" />
     <Compile Include="Context\IDrawingContext.cs" />
-    <Compile Include="UserInterface\SchemeOne.cs" />
-    <Compile Include="UserInterface\SchemeTwo.cs" />
+    <Compile Include="UserInterface\VisualPNG.cs" />
+    <Compile Include="UserInterface\VisualSVG.cs" />
     <Compile Include="Visual\IDrawble.cs" />
-    <Compile Include="Visual\ISvgSaver.cs" />
     <Compile Include="Visual\VisualCurve.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
